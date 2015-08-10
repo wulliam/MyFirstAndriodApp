@@ -1,28 +1,33 @@
 package org.wuliang.myfirstapp;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
-public class MyActivity extends AppCompatActivity {
-    public final static String EXTRA_MESSAGE = "org.wulaing.myfirstapp.MESSAGE";
+public class DemoListViewActivity extends AppCompatActivity {
+
+    private final static String [] lists = new String [] {"first", "second", "third", "fourth", "fifth"};
+
+    private ListView listView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
-        Log.i("XX", "onCreate");
+        setContentView(R.layout.activity_demo_list_view);
+        listView = (ListView) this.findViewById(R.id.listView);
+
+
+        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lists));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_my, menu);
+        getMenuInflater().inflate(R.menu.menu_demo_list_view, menu);
         return true;
     }
 
@@ -39,20 +44,5 @@ public class MyActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void sendMessage(View view) {
-        Log.i("XX", "sendMessage");
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.editText);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }
-
-    public void showDemoList(View view) {
-        Log.i("XX", "showDemoList");
-        Intent intent = new Intent(this, DemoListViewActivity.class);
-        startActivity(intent);
     }
 }

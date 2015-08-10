@@ -24,6 +24,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.wuliang.myfirstapp.MyActivity" />
         </activity>
+        <activity
+            android:name=".DemoListViewActivity"
+            android:label="@string/title_activity_demo_list_view"
+            android:parentActivityName=".MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.wuliang.myfirstapp.MyActivity" />
+        </activity>
     </application>
 
 </manifest>
